@@ -37,7 +37,7 @@ def solve_helper(numbers, target):
         if ((pairs[0]/float(pairs[1])).is_integer()):
             res = solve_helper(new_numbers + [pairs[0]/pairs[1]], target)
             if res[0]:
-                res[1].append('{} / {} = {}'.format(pairs[0], pairs[1], pairs[0]/pairs[1]))
+                res[1].append('{} / {} = {}'.format(pairs[0], pairs[1], int(pairs[0]/pairs[1])))
                 return (True, res[1])
         
     # If we haven't returned by now, then it's impossible at this level

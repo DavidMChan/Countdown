@@ -7,7 +7,7 @@ import re
 # possible words (no -,.,# etc...)
 def clean_words_file(words_file):
     dict_file = open(words_file, 'r')
-    output_file = open("b_countdown_clean_words.txt", 'w')
+    output_file = open("countdown_clean_words.txt", 'w')
     for line in dict_file:
         line = re.split('/|\n', line)
         if line[0].isalpha() and line[0].islower():
@@ -28,7 +28,7 @@ def build_dictionary(dict_file):
 def solve(letters):
     if len(letters) != 9 or any([not x.isalpha() for x in letters]):
         raise ValueError('Letters is not a legal for countdown!')
-    letters_dict = build_dictionary("b_countdown_clean_words.txt")
+    letters_dict = build_dictionary("countdown_clean_words.txt")
     best_size = 9
     possible_words = []
     while best_size > 0:
