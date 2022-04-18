@@ -34,27 +34,6 @@ def get_letters():
 def get_conundrum():
     return app.send_static_file('conundrum.html')
 
-
-
-
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def get_resource(path):  # pragma: no cover
-    mimetypes = {
-        ".css": "text/css",
-        ".html": "text/html",
-        ".js": "application/javascript",
-    }
-    complete_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), path)
-    path_val = path.split('/')
-    if path_val[-1] not in ['letters.js','numbers.js','letters.html','numbers.html','countdown.html','conundrum.html','index.html','letters_style.css','numbers_style.css']:
-        return make_response(jsonify({'error':'File Not found!'}),404)
-    ext = os.path.splitext(path)[1]
-    mimetype = mimetypes.get(ext, "text/html")
-    content = get_file(complete_path)
-    return Response(content, mimetype=mimetype)
-
-
 @app.route('/countdown/api/v1.0/numbers', methods=['GET'])
 def solve_numbers():
     target = int(request.args.get("target"))
@@ -79,7 +58,6 @@ def solve_letters():
     if len(result) == 0:
         result.append("It's Impossible!")
     return make_response(jsonify({'result':result}), 200)
-
 
 
 @app.errorhandler(404)
