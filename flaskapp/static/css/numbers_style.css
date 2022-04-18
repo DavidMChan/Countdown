@@ -1,0 +1,38 @@
+.num-input {
+    text-align: center;
+    border: solid 1px #ccc;
+    box-shadow: 0 0 5px #ccc inset;
+    outline: none;
+    transition: all .2s ease-in-out;
+    border-radius: 3px;
+}
+
+.num-input.invalid {
+    border-color: red;
+    box-shadow: 0 0 5px red inset;
+}
+
+.num-input:focus {
+    border-color: blue;
+    box-shadow: 0 0 5px blue inset;
+}
+
+#message  {
+    display: none;
+}
+
+.loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    height: 1.5em;
+    width: 1.5em;
+    animation: spin 2s linear infinite;
+    float: left;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
